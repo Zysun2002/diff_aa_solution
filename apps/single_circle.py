@@ -1,11 +1,13 @@
 import pydiffvg
 import torch
 import skimage
+import ipdb
 import numpy as np
 
 # Use GPU if available
 pydiffvg.set_use_gpu(torch.cuda.is_available())
 
+ipdb.set_trace()
 canvas_width = 256
 canvas_height = 256
 circle = pydiffvg.Circle(radius = torch.tensor(40.0),
@@ -33,7 +35,7 @@ target = img.clone()
 # normalize radius & center for easier learning rate
 radius_n = torch.tensor(20.0 / 256.0, requires_grad=True)
 center_n = torch.tensor([108.0 / 256.0, 138.0 / 256.0], requires_grad=True)
-color = torch.tensor([0.3, 0.2, 0.8, 1.0], requires_grad=True)
+color = torch.tensor([0., 0., 0.9, 1.0], requires_grad=True)
 circle.radius = radius_n * 256
 circle.center = center_n * 256
 circle_group.fill_color = color

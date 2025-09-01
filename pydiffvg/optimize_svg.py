@@ -1604,4 +1604,3 @@ class OptimizableSvg:
                 del defcpy[key]
     #endregion
 
-

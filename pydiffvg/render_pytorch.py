@@ -4,6 +4,7 @@ import pydiffvg
 import time
 from enum import IntEnum
 import warnings
+import ipdb
 
 print_timing = False
 
@@ -33,6 +34,8 @@ class RenderFunction(torch.autograd.Function):
             Given a list of shapes, convert them to a linear list of argument,
             so that we can use it in PyTorch.
         """
+
+
         num_shapes = len(shapes)
         num_shape_groups = len(shape_groups)
         args = []
@@ -43,6 +46,8 @@ class RenderFunction(torch.autograd.Function):
         args.append(output_type)
         args.append(use_prefiltering)
         args.append(eval_positions.to(pydiffvg.get_device()))
+        
+        # shape 
         for shape in shapes:
             use_thickness = False
             if isinstance(shape, pydiffvg.Circle):
@@ -97,6 +102,7 @@ class RenderFunction(torch.autograd.Function):
             else:
                 args.append(shape.stroke_width.cpu())
 
+        # fill color
         for shape_group in shape_groups:
             assert(shape_group.shape_ids.is_contiguous())
             args.append(shape_group.shape_ids.to(torch.int32).cpu())
@@ -203,6 +209,8 @@ class RenderFunction(torch.autograd.Function):
         shape_groups = []
         shape_contents = [] # Important to avoid GC deleting the shapes
         color_contents = [] # Same as above
+
+        # load shape args and build shape primitive
         for shape_id in range(num_shapes):
             shape_type = args[current_index]
             current_index += 1
@@ -252,6 +260,7 @@ class RenderFunction(torch.autograd.Function):
                 shape_type, shape.get_ptr(), stroke_width.item()))
             shape_contents.append(shape)
 
+        # load color fill args
         for shape_group_id in range(num_shape_groups):
             shape_ids = args[current_index]
             current_index += 1
@@ -362,6 +371,7 @@ class RenderFunction(torch.autograd.Function):
         current_index += 1
         filt = diffvg.Filter(filter_type, filter_radius)
 
+        # key forward process
         start = time.time()
         scene = diffvg.Scene(canvas_width, canvas_height,
             shapes, shape_groups, filt, pydiffvg.get_use_gpu(),

@@ -1,0 +1,15 @@
+running install
+running build
+running build_py
+copying pydiffvg/__init__.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/color.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/device.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/image.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/optimize_svg.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/parse_svg.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/pixel_filter.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/render_pytorch.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/save_svg.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+copying pydiffvg/shape.py -> build/lib.linux-x86_64-cpython-310/pydiffvg
+running build_ext
+-- Configuring incomplete, errors occurred!
