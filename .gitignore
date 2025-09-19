@@ -14,3 +14,5 @@ exp
 raw
 *.svg
 *.png
+*.pdf
+*.tex

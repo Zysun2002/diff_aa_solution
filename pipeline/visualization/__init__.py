@@ -8,4 +8,4 @@ def run(data_path, gallery_path):
 
     # raster_svg(data_path)
 
-    run_latex(data_path, gallery_path)
+    run_latex(data_path, gallery_path, delete_vis=True)

@@ -1,4 +1,4 @@
-import os
+ import os
 import tensorflow as tf
 import diffvg
 import pydiffvg_tensorflow as pydiffvg

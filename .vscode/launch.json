@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "fit.main",
+            "type": "cppvsdbg", 
+            "request": "launch",
+            "program": "E:/Ziyu/softwares/miniconda/envs/diffvg_debug/python.exe",
+            "args": ["-m", "fit.main"],
+            "cwd": "E:/Ziyu/workspace/diff_aa_solution/pipeline",
+            "console": "integratedTerminal",
+            "stopAtEntry": false,
+            "symbolSearchPath": "E:/Ziyu/workspace/diffvg/build",
+            "env": {
+                "PYTHONPATH": "E:/Ziyu/softwares/miniconda/envs/diffvg_debug/Lib/site-packages"
+            }
+        }
+    ]
+}

@@ -18,5 +18,6 @@ def imwrite(img, filename, gamma = 2.2, normalize = False):
     if img.ndim==2:
         #repeat along the third dimension
         img=np.expand_dims(img,2)
-    img[:, :, :3] = np.power(img[:, :, :3], 1.0/gamma)
+    
+    # img[:, :, :3] = np.power(img[:, :, :3], 1.0/gamma)
     skimage.io.imsave(filename, (img * 255).astype(np.uint8))

@@ -3,13 +3,6 @@ from PIL import Image
 
 # subfolder-level
 
-def progressive_resize(img, target_size):
-    w, h = img.size
-    while w // 2 >= target_size and h // 2 >= target_size:
-        w, h = w // 2, h // 2
-        img = img.resize((w, h), resample=Image.LANCZOS)
-    return img.resize((target_size, target_size), resample=Image.LANCZOS)
-
 
 def run(subfold_path):
     size_map = {256: 128, 128: 64, 64: 32, 32: 16}
@@ -24,7 +17,9 @@ def run(subfold_path):
         img = Image.open(infile)
 
         # Resize with anti-aliasing
-        img_down = progressive_resize(img, target_size)
+        img_down = img.resize((target_size, target_size), resample=Image.LANCZOS)
+        # other options: NEAREST, BILINEAR, BICUBIC
+
 
         # Save output
         outfile = subfold_path / f"aa_{target_size}.png"
